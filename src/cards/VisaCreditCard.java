@@ -21,7 +21,7 @@ public class VisaCreditCard extends CreditCard{
 
     @Override
     protected void setFee() {
-        String result = super.expirationDate.replaceAll("/", "");
+        String result = super.getExpirationDate().replaceAll("/", "");
         final int mid = result.length() / 2;
         String[] parts = {result.substring(0, mid), result.substring(mid)};
         fee = Double.parseDouble(parts[0]) / Double.parseDouble(parts[1]);
