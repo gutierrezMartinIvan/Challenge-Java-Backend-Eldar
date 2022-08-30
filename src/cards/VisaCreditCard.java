@@ -6,8 +6,14 @@ public class VisaCreditCard extends CreditCard{
         super(issuer, cardNumber, cardHolder, expirationDate);
     }
 
+
     @Override
-    public String toString() {
-        return super.toString();
+    public String doOperation() {
+        return null;
+    }
+
+    @Override
+    public boolean isOperationValid() {
+        return false;
     }
 }
