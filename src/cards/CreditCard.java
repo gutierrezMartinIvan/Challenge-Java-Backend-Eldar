@@ -6,11 +6,11 @@ import java.util.Objects;
 
 public abstract class CreditCard {
 
-    private String issuer;
-    private String cardNumber;
-    private String cardHolder;
+    private final String issuer;
+    private final String cardNumber;
+    private final String cardHolder;
 
-    private String expirationDate;
+    private final String expirationDate;
 
     public CreditCard(String issuer, String cardNumber, String cardHolder, String expirationDate) throws Exception {
         VerifyCreditCard.validateCreditCardDates(issuer, cardNumber, cardHolder, expirationDate);
@@ -20,18 +20,23 @@ public abstract class CreditCard {
         this.expirationDate = expirationDate;
         setFee();
     }
+
     public String getCreditCardInfo() {
-        return  "Issuer='" + issuer + '\'' +
+        return "Issuer='" + issuer + '\'' +
                 ", Card number='" + cardNumber + '\'' +
                 ", Card holder='" + cardHolder + '\'' +
                 ", Expiration date='" + expirationDate + "'";
     }
 
     public abstract String feeOperation(Double money);
+
     protected boolean isOperationValid(Double money) {
-        return money<1000D&&money>0?true:false;
+        return money < 1000D && money > 0;
     }
-    public boolean isCreditCardUsable(){return true;};
+
+    public boolean isCreditCardUsable() {
+        return true;
+    }
 
     protected abstract void setFee();
 

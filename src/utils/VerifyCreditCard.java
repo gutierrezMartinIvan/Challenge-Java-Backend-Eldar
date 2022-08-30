@@ -52,7 +52,7 @@ public class VerifyCreditCard {
     private static void verifyAmexCreditCardNumber(String cardNumber) {
         String amexRegex = "^3[47][0-9]{13}";
         Pattern pattern = Pattern.compile(amexRegex);
-        cardNumber.replace("_","").replace(" ", "");
+        cardNumber.replace("_", "").replace(" ", "");
         Matcher matcher = pattern.matcher(cardNumber);
         if (!matcher.matches())
             throw new InvalidCreditCardNumberException("Invalid credit card number. Please verify your credit card number");
@@ -61,7 +61,7 @@ public class VerifyCreditCard {
     private static void verifyVisaCreditCardNumber(String cardNumber) {
         String visaRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
         Pattern pattern = Pattern.compile(visaRegex);
-        cardNumber.replace("-","");
+        cardNumber.replace("-", "");
         cardNumber.replace(" ", "");
         Matcher matcher = pattern.matcher(cardNumber);
         if (!matcher.matches())
@@ -71,16 +71,16 @@ public class VerifyCreditCard {
     private static void verifyNaraCreditCardNumber(String cardNumber) {
         String naraRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
         Pattern pattern = Pattern.compile(naraRegex);
-        cardNumber.replace("_","").replace(" ", "");
+        cardNumber.replace("_", "").replace(" ", "");
         Matcher matcher = pattern.matcher(cardNumber);
         if (!matcher.matches())
             throw new InvalidCreditCardNumberException("Invalid credit card number. Please verify your credit card number");
     }
 
     private static void verifyIssuer(List<String> existingCreditCards, String issuer) throws Exception {
-            if (existingCreditCards.contains(issuer)){}
-            else {
-                throw new InvalidIssuerException("Invalid issuer credit card. Please verify your credit card issuer.");
-            }
+        if (existingCreditCards.contains(issuer)) {
+        } else {
+            throw new InvalidIssuerException("Invalid issuer credit card. Please verify your credit card issuer.");
+        }
     }
 }

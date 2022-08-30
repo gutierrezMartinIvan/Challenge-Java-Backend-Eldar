@@ -2,7 +2,7 @@ package cards;
 
 import exceptions.AmountExceededException;
 
-public class AmexCreditCard extends CreditCard{
+public class AmexCreditCard extends CreditCard {
 
     private double fee;
 
@@ -12,8 +12,8 @@ public class AmexCreditCard extends CreditCard{
 
     @Override
     public String feeOperation(Double money) {
-        if(isOperationValid(money))
-            return "The fee for the operation is: $" + String.format("%.2f",fee*money);
+        if (isOperationValid(money))
+            return "The fee for the operation is: $" + String.format("%.2f", fee * money);
         else
             throw new AmountExceededException("The operation can only be carried out with a value of up to $999.99");
     }
