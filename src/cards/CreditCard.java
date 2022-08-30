@@ -1,5 +1,9 @@
 package cards;
 
+import utils.VerifyCreditCard;
+
+import java.util.Objects;
+
 public abstract class CreditCard {
 
     private String issuer;
@@ -14,12 +18,24 @@ public abstract class CreditCard {
         this.cardHolder = cardHolder;
         this.expirationDate = expirationDate;
     }
-
-    @Override
-    public String toString() {
+    public String getCreditCardInfo() {
         return  " issuer='" + issuer + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", cardHolder='" + cardHolder + '\'' +
                 ", expirationDate='" + expirationDate;
+    }
+
+    public abstract String doOperation();
+    public abstract boolean isOperationValid();
+    public boolean isCreditCardUsable(){return true;};
+
+    public boolean areEquals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CreditCard that)) return false;
+
+        if (!Objects.equals(issuer, that.issuer)) return false;
+        if (!Objects.equals(cardNumber, that.cardNumber)) return false;
+        if (!Objects.equals(cardHolder, that.cardHolder)) return false;
+        return Objects.equals(expirationDate, that.expirationDate);
     }
 }
