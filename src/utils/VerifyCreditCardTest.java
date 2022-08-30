@@ -11,8 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VerifyCreditCardTest {
-
-
     @Test()
     void verifyCardExpirationDateThrowsException() {
         assertThrows(InvalidExpirationDateException.class, () -> VerifyCreditCard.verifyCardExpirationDate("asasas"));
