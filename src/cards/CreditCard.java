@@ -18,6 +18,7 @@ public abstract class CreditCard {
         this.cardNumber = cardNumber;
         this.cardHolder = cardHolder;
         this.expirationDate = expirationDate;
+        setFee();
     }
     public String getCreditCardInfo() {
         return  "Issuer='" + issuer + '\'' +
