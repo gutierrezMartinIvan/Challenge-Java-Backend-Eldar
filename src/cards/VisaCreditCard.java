@@ -1,9 +1,6 @@
 package cards;
 
 import exceptions.AmountExceededException;
-import exceptions.InvalidIssuerException;
-
-import java.util.stream.IntStream;
 
 public class VisaCreditCard extends CreditCard{
 
