@@ -15,7 +15,7 @@ class VerifyCreditCardTest {
 
     @Test()
     void verifyCardExpirationDateThrowsException() {
-        assertThrowsa(InvalidExpirationDateException.class, () -> VerifyCreditCard.verifyCardExpirationDate("asasas"));
+        assertThrows(InvalidExpirationDateException.class, () -> VerifyCreditCard.verifyCardExpirationDate("asasas"));
     }
 
     @Test()
