@@ -20,10 +20,10 @@ public abstract class CreditCard {
         this.expirationDate = expirationDate;
     }
     public String getCreditCardInfo() {
-        return  " issuer='" + issuer + '\'' +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", cardHolder='" + cardHolder + '\'' +
-                ", expirationDate='" + expirationDate;
+        return  "Issuer='" + issuer + '\'' +
+                ", Card number='" + cardNumber + '\'' +
+                ", Card holder='" + cardHolder + '\'' +
+                ", Expiration date='" + expirationDate + "'";
     }
 
     public abstract String feeOperation(Double money);
