@@ -78,9 +78,7 @@ public class VerifyCreditCard {
     }
 
     static void verifyIssuer(List<String> existingCreditCards, String issuer) throws Exception {
-        if (existingCreditCards.contains(issuer)) {
-        } else {
+        if (!existingCreditCards.contains(issuer))
             throw new InvalidIssuerException("Invalid issuer credit card. Please verify your credit card issuer.");
-        }
     }
 }
