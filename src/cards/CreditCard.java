@@ -6,10 +6,11 @@ import java.util.Objects;
 
 public abstract class CreditCard {
 
-    protected String issuer;
-    protected String cardNumber;
-    protected String cardHolder;
-    protected String expirationDate;
+    private String issuer;
+    private String cardNumber;
+    private String cardHolder;
+
+    private String expirationDate;
 
     public CreditCard(String issuer, String cardNumber, String cardHolder, String expirationDate) throws Exception {
         VerifyCreditCard.validateCreditCardDates(issuer, cardNumber, cardHolder, expirationDate);
@@ -41,5 +42,9 @@ public abstract class CreditCard {
         if (!Objects.equals(cardNumber, that.cardNumber)) return false;
         if (!Objects.equals(cardHolder, that.cardHolder)) return false;
         return Objects.equals(expirationDate, that.expirationDate);
+    }
+
+    protected String getExpirationDate() {
+        return expirationDate;
     }
 }
