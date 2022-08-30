@@ -21,7 +21,7 @@ public class VerifyCreditCard {
         verifyCardExpirationDate(expirationDate);
     }
 
-    private static void verifyCardExpirationDate(String expirationDate) throws ParseException {
+    static void verifyCardExpirationDate(String expirationDate) throws ParseException {
         if (!expirationDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}"))
             throw new InvalidExpirationDateException("Invalid expiration date format. It should look as '01/28'");
         Date date = new Date(System.currentTimeMillis());
@@ -32,7 +32,7 @@ public class VerifyCreditCard {
             throw new ExpiredCreditCardException("The credit card is already expired");
     }
 
-    private static void verifyCardHolder(String cardHolder) {
+    static void verifyCardHolder(String cardHolder) {
         String result = cardHolder.replaceAll("\\s", "");
         IntStream.iterate(0, i -> i + 1).limit(result.length()).forEach(position -> {
             if (!Character.isLetter(result.charAt(position)))
@@ -40,7 +40,7 @@ public class VerifyCreditCard {
         });
     }
 
-    private static void verifyCardNumber(String cardNumber, String issuer) {
+    static void verifyCardNumber(String cardNumber, String issuer) {
         if (issuer.equals("nara"))
             verifyNaraCreditCardNumber(cardNumber);
         else if (issuer.equals("visa"))
@@ -49,7 +49,7 @@ public class VerifyCreditCard {
             verifyAmexCreditCardNumber(cardNumber);
     }
 
-    private static void verifyAmexCreditCardNumber(String cardNumber) {
+    static void verifyAmexCreditCardNumber(String cardNumber) {
         String amexRegex = "^3[47][0-9]{13}";
         Pattern pattern = Pattern.compile(amexRegex);
         cardNumber.replace("_", "").replace(" ", "");
@@ -58,7 +58,7 @@ public class VerifyCreditCard {
             throw new InvalidCreditCardNumberException("Invalid credit card number. Please verify your credit card number");
     }
 
-    private static void verifyVisaCreditCardNumber(String cardNumber) {
+    static void verifyVisaCreditCardNumber(String cardNumber) {
         String visaRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
         Pattern pattern = Pattern.compile(visaRegex);
         cardNumber.replace("-", "");
@@ -68,7 +68,7 @@ public class VerifyCreditCard {
             throw new InvalidCreditCardNumberException("Invalid credit card number. Please verify your credit card number");
     }
 
-    private static void verifyNaraCreditCardNumber(String cardNumber) {
+    static void verifyNaraCreditCardNumber(String cardNumber) {
         String naraRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
         Pattern pattern = Pattern.compile(naraRegex);
         cardNumber.replace("_", "").replace(" ", "");
@@ -77,7 +77,7 @@ public class VerifyCreditCard {
             throw new InvalidCreditCardNumberException("Invalid credit card number. Please verify your credit card number");
     }
 
-    private static void verifyIssuer(List<String> existingCreditCards, String issuer) throws Exception {
+    static void verifyIssuer(List<String> existingCreditCards, String issuer) throws Exception {
         if (existingCreditCards.contains(issuer)) {
         } else {
             throw new InvalidIssuerException("Invalid issuer credit card. Please verify your credit card issuer.");
