@@ -6,14 +6,13 @@ public class NaraCreditCard extends CreditCard{
         super(issuer, cardNumber, cardHolder, expirationDate);
     }
 
-
     @Override
-    public String doOperation() {
+    public String feeOperation(Double money) {
         return null;
     }
 
     @Override
-    public boolean isOperationValid() {
-        return false;
+    protected void setFee() {
+
     }
 }
